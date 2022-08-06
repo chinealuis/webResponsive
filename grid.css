@@ -1,0 +1,111 @@
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    height: 100%;
+    font-size: 70%;                                     /* agarra el 70% del tamaño base q tenga el navegador */
+  }
+  .h1{
+    font-size: 1.5rem;    
+  }
+  .text{
+    font-size: 0.75rem;
+    margin: 1em;
+  }
+  body {
+    font-family: "Public Sans", sans-serif;
+    font-size: 1.2rem;
+    min-height: 100%;                                   /* el body ocupe el 100% d la pag */
+  }
+  
+.grid-container * {                                    /* para q todos los elementos dentro hereden este estilo */
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+}
+.grid-container{                                       /* para q se visualice en celulares */
+    display: grid;
+    gap: 10px;
+ /* grid-template-areas:                              /* para definir areas dentro dl grid 
+    
+    "header"                                          /* los elementos dentro d estas areas van a estar en la posicion q se designe aki 
+    "navbar"
+    "sidebar"
+    "main"    
+    "footer";  */
+
+    grid-template:                                    /* otra forma mas sencilla de hacer lo mismo*/
+    "header"  100px                        /*una fila con una columna con lo q hay en el area header  y un alto de 100px */
+    "navbar"  50px                         /* lo mismo pero con un alto de 100px */
+    "main"    auto
+    "sidebar" 100px                         
+    "footer"  100px      
+}
+@media (min-width:600px){
+    html {
+        font-size: 100%;
+    }
+}
+
+@media(min-width:600px){                               /* se visualiza asi si tiene como minimo 600px d ancho. Para tablet */
+    .grid-container{
+           /* grid-template-columns: 200px auto;      /* El ancho d cada columna    
+    grid-row: 100px 50px auto 100px ;                       /* el alto de cada fila 
+    grid-template-areas:                                    /* se crean 2 columnas con esta forma 
+    "header     header"
+    "navbar     navbar"
+    "sidebar    main"
+    "footer     footer";*/
+
+    grid-template:                                    /* otra forma mas sencilla de hacer lo mismo*/
+    "header     header"  100px                        /*una fila con dos columnas con lo q hay en el area header  y un alto de 100px */
+    "navbar     navbar"  50px                         /* lo mismo pero con un alto de 100px */
+    "sidebar    main"    auto                          
+    "footer     footer"  100px /                      /* pa establecer el ancho de las columnas se pone "/" y a continuacion el ancho de cada una */
+     200px       auto ;                                /* la primera columna tiene un ancho de 200px y la segunda el tamaño es auto */
+    font-size: 1.2rem;                                  /* rem untiliza es relativo al tamaño de fuente base del html */
+    padding: 0.25em;                                     /* em es relativo al tamaño d fuente dl elemento superior */
+ 
+}}
+
+@media (min-width:900px){                              /* modo escritorio, a partir de 900px */
+    .grid-container{
+        grid-template: 
+        "header header header" 100px
+        "navbar main sidebar"  auto 
+        "footer footer footer" 100px/ 
+        200px   auto  200px;
+        font-size: 1.5rem;
+    }
+}
+
+.header{
+    grid-area: header;                              /* va ocupar el area q tenga ese nombre */
+    background-color: aliceblue;
+}
+
+.navbar{
+ grid-area: navbar;
+ background-color: antiquewhite;
+}
+.footer{
+    grid-area: footer;
+    background-color: aqua;
+ }
+ .sidebar{
+    grid-area: sidebar;
+    background-color: aquamarine;
+ }
+ .main {
+    grid-area: main;
+    box-shadow: none;
+    border-radius: 0%;
+    padding: 0%;
+    background-color: blueviolet;
+ }
